@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>score_keeper</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style type="text/css">
+
+.btn-primary {
+    color: black; 
+    background-color: white;
+    border-color: black;}
+.btn {
+border-radius: .5rem;}
+
+body{
+padding-left: 15px;
+padding-top: 20px;}
+
+.winner{
+color: green;}
+
+</style>
+</head>
+<body>
+
+<h1><span class="div1">0</span> to <span class="div2">0</span></h1>
+<p>Playing to: <span class="reset">0</span></p>
+<input type="number" name:"total">
+<button type="button" class="btn1 btn btn-primary px-4 py-0">Player One</button>
+<button type="button" class="btn2 btn btn-primary px-4 py-0">Player Two</button>
+<button type="button" class="btn3 btn btn-primary px-4 py-0">Reset</button>
+
+<script type="text/javascript">
+var count1=0;
+var count2=0;
+var count1Display=document.querySelector(".div1");
+var count2Display=document.querySelector(".div2");
+var gameOver=false;
+var winningScore=2;
+var resetDisplay = document.querySelector(".btn3");
+var num = document.querySelector("input");
+var chances=document.querySelector(".reset");
+
+var counter1 = document.body.querySelector(".btn1");
+counter1.addEventListener("click",function(){
+if(!gameOver){
+count1++;
+if(count1==winningScore){
+ gameOver=true;
+ count1Display.classList.add("winner");
+}
+count1Display.textContent= count1 ;
+}
+});
+
+var counter2 = document.body.querySelector(".btn2");
+counter2.addEventListener("click",function(){
+if(!gameOver){
+count2++;
+if(count2==winningScore){
+ gameOver=true;
+ count2Display.classList.add("winner");
+}
+count2Display.textContent= count2;
+}
+});
+ 
+resetDisplay.addEventListener("click",function(){
+count1=0;
+count2=0;
+count1Display.classList.remove("winner");
+count2Display.classList.remove("winner");
+gameOver=false;
+count1Display.textContent= count1;
+count2Display.textContent= count2;
+});
+
+num.addEventListener("change",function(){
+ chances.textContent= num.value;
+ winningScore=num.value;
+});
+
+</script>
+</body>
+</html>
